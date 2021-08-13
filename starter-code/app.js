@@ -163,13 +163,16 @@ let message = name => `Hello, ${name}!`;
 console.log(message('Allie'));
 
 
-let Student = function(name, age, hometown) {
+let Student = function (name, lastName, age) {
   this.name = name;
+  this.lastName = lastName;
   this.age = age;
-  this.hometown = hometown;
-};
+}
 
 let joe = new Student('Joe', 'Schmoe', 100);
+
+//app.js:178 Uncaught TypeError: Student is not a constructor is the error given
+//So it reads the Student as a function or something besides an actual constructor
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
@@ -183,20 +186,21 @@ Student.prototype.greeting = function() {
   return `Hi, my name is ${this.name}`;
 };
 
+//No error, but this.name did not appear
+
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 // TODO: After viewing the previous console.log(), return the code to a working state.
 
 
 
-Student.courseName = function() {
-  return 'This student is enrolled in Code 301.';
-};
+Student.courseName = () => 'This student is enrolled in Code 301.';
+//No errors
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(Student.courseName());
+console.log(Student.courseName());
 
 
 
